@@ -1,0 +1,55 @@
+@import './variables';
+@import './components/navbar';
+@import './components/form';
+@import './pages/profile';
+
+*, :before, :after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.global-wrapper {
+  padding: 12px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Quicksand', sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.flash {
+  position: absolute;
+  top: 16px;
+  z-index: 555;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  padding: 12px 24px;
+  background-color: $error;
+  color: white;
+  border: 2px solid $error-dark;
+  animation: flashAnim 1s ease-in-out forwards;
+  -webkit-animation: flashAnim 1s ease-in-out forwards;
+}
+
+@keyframes flashAnim {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.align-center {
+  text-align: center;
+}

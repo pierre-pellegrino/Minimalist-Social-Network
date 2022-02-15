@@ -1,0 +1,59 @@
+import React from "react";
+import ReactDOM, { render } from "react-dom";
+import RegisterForm from "./components/RegisterForm";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate
+} from "react-router-dom";
+import Profile from "./pages/Profile";
+import Cookies from 'js-cookie';
+import Home from "./pages/Home";
+import './style.scss';
+import Navbar from "./components/Navbar";
+import store from "./store";
+import { Provider } from "react-redux";
+import LoginForm from "./components/LoginForm";
+
+
+export const checkAuth = () => {
+  return Cookies.get('token') ? true : false;
+}
+
+const App = () => {
+
+  return (    
+    <Provider store={store}>
+      <div className="global-wrapper">
+        <Router>
+          <Navbar />
+          <Routes>
+
+          <Route path="/" element={<Home />} />
+          <Route path="/register" element={<RegisterForm />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/profile" element={<Profile />} />
+
+          </Routes>
+
+        </Router>
+      </div>
+    </Provider>
+  );
+};
+
+render(<App />, document.getElementById('root'));
+
+// ça a pas l'air ouf avec react router v6 alors je pose ça là
+// const PrivateRoute = ({component: Component, ...rest}) => {
+//   return (
+//    <Route {...rest} render={props => (
+//       checkAuth() ? (
+//         <Component {...props} />
+//       ) : (
+//         <Navigate to={{ pathname: '/'}} />
+//       )
+//    )} />
+//   );
+// };

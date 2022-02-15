@@ -1,0 +1,42 @@
+nav {
+  padding: 6px 12px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  h2 {
+    margin-right: auto;
+  }
+
+  a {
+    margin: 0 12px;
+  }
+
+  .signup-btn {
+    padding: 6px 18px;
+    background-color: $blue-dark;
+    color: #fff;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+    transition: background-color 0.3s;
+    -webkit-transition: background-color 0.3s;
+    -moz-transition: background-color 0.3s;
+    -ms-transition: background-color 0.3s;
+    -o-transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $blue;
+    }
+  }
+
+  .regular-link {
+    
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+}
