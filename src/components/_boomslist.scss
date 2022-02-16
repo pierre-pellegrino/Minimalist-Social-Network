@@ -41,5 +41,30 @@
         opacity: 0.7;
       }
     }
+
+    .boom-delete {
+      background-color: $error;
+      color: #fff;
+      padding: 2px 6px;
+      border-radius: 0 0 0 4px;
+      -webkit-border-radius: 0 0 0 4px;
+      -moz-border-radius: 0 0 0 4px;
+      -ms-border-radius: 0 0 0 4px;
+      -o-border-radius: 0 0 0 4px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      right: 0;
+      opacity: 0;
+      transition: opacity 0.2s;
+      -webkit-transition: opacity 0.2s;
+      -moz-transition: opacity 0.2s;
+      -ms-transition: opacity 0.2s;
+      -o-transition: opacity 0.2s;
+}
+
+    &:hover .boom-delete {
+      opacity: 1;
+    }
   }
 }

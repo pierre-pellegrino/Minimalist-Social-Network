@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Navigate} from 'react-router-dom';
 import { TailSpin } from  'react-loader-spinner';
 import { useSelector } from 'react-redux';
 import BoomsList from '../components/BoomsList';
@@ -9,7 +9,7 @@ const User = () => {
   const [fetchUser, setFetchUser] = useState("");
   const loginInfos = useSelector(state => state);
 
-  if (!fetchUser) {
+  if (loginInfos.is_connected && !fetchUser) {
     fetch(`http://localhost:1337/users/${username}`, {
       method: 'get',
       headers: {
@@ -30,12 +30,11 @@ const User = () => {
       </div>
     );
   }
-  else {
+  else if (loginInfos.is_connected && fetchUser) {
     return (
       <>
         <div className="profile-wrapper">
           <h1>Profile</h1>
-          {console.log(fetchUser)}
           <p className="underline">Username : <span>{fetchUser.username}</span> </p>
           <p className="underline">Email : <span>{fetchUser.email}</span> </p>
           <p className="underline">Description : <span>{fetchUser.description ? fetchUser.description : "This user doesn't have a description yet." }</span> </p>
@@ -44,6 +43,9 @@ const User = () => {
         <BoomsList user={fetchUser}/>
       </>
     );
+  }
+  else {
+    return <Navigate to="/" />
   }
 
 };
