@@ -15,6 +15,7 @@ import Navbar from "./components/Navbar";
 import store from "./store";
 import { Provider } from "react-redux";
 import LoginForm from "./components/LoginForm";
+import User from "./pages/User";
 
 
 export const checkAuth = () => {
@@ -34,7 +35,7 @@ const App = () => {
           <Route path="/register" element={<RegisterForm />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/profile" element={<Profile />} />
-
+          <Route path="/user/:username" element={<User />} />
           </Routes>
 
         </Router>

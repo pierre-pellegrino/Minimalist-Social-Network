@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { TailSpin } from  'react-loader-spinner'
 import BoomCard from './BoomCard';
 
-const BoomsList = () => {
+const BoomsList = ({user}) => {
 
   const [fetchedBooms, setFetchedBooms] = useState([]);
   const loginInfos = useSelector(state => state);
@@ -34,7 +34,7 @@ const BoomsList = () => {
         <h2> Latest Booms </h2>
         {fetchedBooms.map((boom, i) => {
           return (
-           <BoomCard key={i} boom={boom} />
+           !user ? <BoomCard key={i} boom={boom} /> : boom.user.id === user.id && <BoomCard key={i} boom={boom} />
           )
         })}
       </div>

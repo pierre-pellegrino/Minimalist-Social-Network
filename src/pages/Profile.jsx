@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {Navigate} from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import EditProfileForm from '../components/EditProfileForm';
-import { TailSpin } from  'react-loader-spinner'
+import { TailSpin } from  'react-loader-spinner';
 
 const Profile = () => {
   const [fetchedProfile, setFetchedProfile] = useState('');
