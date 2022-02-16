@@ -1,0 +1,38 @@
+.booms-list {
+
+  .boom-wrapper {
+    background-color: #fff;
+    box-shadow: 0 4px 6px 2px rgba(0,0,0,0.1);
+    margin: 1em auto;
+    max-width: 650px;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    position: relative;
+    padding: 1em 3em;
+
+    .boom-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9em;
+
+      .tag {
+        padding: 6px 6px;
+        background-color: $blue-dark;
+        color: #fff;
+        border-radius: 4px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        -ms-border-radius: 4px;
+        -o-border-radius: 4px;
+      }
+    }
+
+    .boom-content {
+      margin-top: 1em;
+    }
+  }
+}

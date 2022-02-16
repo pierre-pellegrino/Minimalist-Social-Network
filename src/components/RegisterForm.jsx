@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Cookies from 'js-cookie';
 import {Link, useNavigate} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { userLogin } from '../redux/login/loginActions';
+import { fetchBoomNumber, userLogin } from '../redux/login/loginActions';
 
 const RegisterForm = () => {
   const [userName, setUserName] = useState("");
@@ -30,7 +30,9 @@ const RegisterForm = () => {
     .then((response) => {
       if (response.jwt) {
         Cookies.set('token',response.jwt);
-        dispatch(userLogin(response.jwt));
+        Cookies.set('id', response.user.id);
+        dispatch(userLogin(response.jwt, response.user.id));
+        dispatch(fetchBoomNumber(response.jwt));
         setError('');
         navigate('/');
       }
@@ -47,7 +49,7 @@ const RegisterForm = () => {
         <h2>Sign Up</h2>
 
         <label htmlFor="username">Username</label>
-        <input type="text" value={userName} onChange={(e) => setUserName(e.target.value)} id="username"></input>
+        <input type="text" maxLength="20" value={userName} onChange={(e) => setUserName(e.target.value)} id="username"></input>
 
         <label htmlFor="email">Email</label>
         <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} id="email"></input>

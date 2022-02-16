@@ -2,6 +2,8 @@
 @import './components/navbar';
 @import './components/form';
 @import './pages/profile';
+@import './pages/home';
+@import './components/boomslist';
 
 *, :before, :after {
   margin: 0;
@@ -9,9 +11,17 @@
   box-sizing: border-box;
 }
 
+body, #root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .global-wrapper {
   padding: 12px;
   font-family: 'Open Sans', sans-serif;
+  background-color: $grey;
+  flex-grow: 1;
 }
 
 h1, h2, h3 {
@@ -52,4 +62,8 @@ a {
 
 .align-center {
   text-align: center;
+}
+
+.bold {
+  font-weight: bolder;
 }

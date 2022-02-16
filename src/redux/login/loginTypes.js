@@ -1,2 +1,6 @@
 export const USER_LOGIN = "USER_LOGIN";
 export const USER_LOGOUT = "USER_LOGOUT";
+
+export const ADD_BOOM = "ADD_BOOM";
+export const SET_BOOM_NUMBER_REQUEST = "SET_BOOM_NUMBER_REQUEST";
+export const SET_BOOM_NUMBER_SUCCESS = "SET_BOOM_NUMBER_SUCCESS";

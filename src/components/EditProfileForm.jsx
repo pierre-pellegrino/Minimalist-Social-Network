@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux'
-import {useNavigate} from 'react-router-dom';
 
 const EditProfileForm = ({profile, onFetched}) => {
 
@@ -34,7 +33,7 @@ const EditProfileForm = ({profile, onFetched}) => {
       <p className="align-center">Want a fresh profile ?</p>
 
       <label htmlFor="profile-username">Username</label>
-      <input type="text" value={userName} onChange={(e) => setUserName(e.target.value)} id="profile-username"></input>
+      <input type="text" maxLength="20" value={userName} onChange={(e) => setUserName(e.target.value)} id="profile-username"></input>
 
       <label htmlFor="profile-description">Description</label>
       <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} id="profile-description"></input>

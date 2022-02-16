@@ -15,7 +15,7 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <h2><Link className="home-link" to="/">FaceHook</Link></h2>
+      <h2><Link className="home-link" to="/">FaceHook 👨‍🦳</Link></h2>
       <div className="navbar-links">
         {!token && <Link className="signup-btn" to="/register">Sign up</Link>}
         {!token && <Link className="regular-link" to="/login">Log In</Link>}

@@ -10,16 +10,17 @@ const Profile = () => {
 
   if (loginInfos.is_connected && !fetchedProfile) {
     fetch('http://localhost:1337/users/me', {
-    method: 'get',
-    headers: {
-      'Authorization': `Bearer ${loginInfos.token}`,
-      'Content-Type': 'application/json'
-    }
-  })
-  .then((response) => response.json())
-  .then((response) => {
-    setFetchedProfile(response);
-  })
+      method: 'get',
+      headers: {
+        'Authorization': `Bearer ${loginInfos.token}`,
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((response) => response.json())
+    .then((response) => {
+      setFetchedProfile(response);
+    })
+    
     return (
       <div className="profile-wrapper">
         <h1>Profile</h1>

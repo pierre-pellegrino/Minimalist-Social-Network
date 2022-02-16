@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Cookies from "js-cookie";
 import { useDispatch, useSelector } from 'react-redux';
-import { userLogin } from '../redux/login/loginActions';
+import { userLogin, fetchBoomNumber } from '../redux/login/loginActions';
 import {useNavigate} from 'react-router-dom';
 
 const LoginForm = () => {
@@ -28,7 +28,9 @@ const LoginForm = () => {
     .then((response) => {
       if (response.jwt) {
         Cookies.set('token',response.jwt);
-        dispatch(userLogin(response.jwt));
+        Cookies.set('id', response.user.id);
+        dispatch(userLogin(response.jwt, response.user.id));
+        dispatch(fetchBoomNumber(response.jwt));
         setError('');
         navigate('/');
       }
