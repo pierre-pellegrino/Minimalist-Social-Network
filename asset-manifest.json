@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Minimalist-Social-Network/static/css/main.e4fd99ca.css",
+    "main.js": "/Minimalist-Social-Network/static/js/main.d23cf078.js",
+    "index.html": "/Minimalist-Social-Network/index.html",
+    "main.e4fd99ca.css.map": "/Minimalist-Social-Network/static/css/main.e4fd99ca.css.map",
+    "main.d23cf078.js.map": "/Minimalist-Social-Network/static/js/main.d23cf078.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e4fd99ca.css",
+    "static/js/main.d23cf078.js"
+  ]
+}
