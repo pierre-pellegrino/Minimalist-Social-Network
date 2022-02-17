@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchBoomNumber } from '../redux/login/loginActions';
+import LikeBtn from './LikeBtn';
 
 const BoomCard = ({boom}) => {
   const loginInfos = useSelector(state => state);
@@ -27,6 +28,7 @@ const BoomCard = ({boom}) => {
       <div className="boom-top">
         {parseInt(loginInfos.id,10) === boom.user.id && <p onClick={() => deleteBoom(boom.id)} className="boom-delete">Delete this boom</p>}
         <p className="tag">Boomed by : <Link className="boom-user" to={`/user/${boom.user.id}`}>{boom.user.username}</Link></p>
+        <LikeBtn likeNb={boom.like} boomId={boom.id} />
         <p>{date}</p>
       </div>
       <p className="boom-content">{boom.text}</p>

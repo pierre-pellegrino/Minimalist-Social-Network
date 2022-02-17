@@ -16,7 +16,7 @@
     .boom-top {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-start;
       font-size: 0.9em;
 
       .tag {
@@ -28,6 +28,10 @@
         -moz-border-radius: 4px;
         -ms-border-radius: 4px;
         -o-border-radius: 4px;
+
+        &.boom-liked {
+          background-color: $like;
+        }
       }
     }
 
@@ -61,10 +65,16 @@
       -moz-transition: opacity 0.2s;
       -ms-transition: opacity 0.2s;
       -o-transition: opacity 0.2s;
-}
+    }
 
     &:hover .boom-delete {
       opacity: 1;
+    }
+
+    .like-btn {
+      margin-top: 6px;
+      font-size: 1.3em;
+      cursor: pointer;
     }
   }
 }

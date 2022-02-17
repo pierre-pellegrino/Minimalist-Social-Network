@@ -34,6 +34,7 @@ const BoomsList = ({user}) => {
         <h2> Latest Booms </h2>
         {fetchedBooms.map((boom, i) => {
           return (
+            // If an user is passed as a parameter, only displays his booms. Otherwise displays them all.
            !user ? <BoomCard key={i} boom={boom} /> : boom.user.id === user.id && <BoomCard key={i} boom={boom} />
           )
         })}

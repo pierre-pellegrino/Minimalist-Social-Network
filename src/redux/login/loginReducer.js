@@ -1,17 +1,19 @@
 import { SET_BOOM_NUMBER_REQUEST, SET_BOOM_NUMBER_SUCCESS, USER_LOGIN } from "./loginTypes";
 import { USER_LOGOUT } from "./loginTypes";
-import { ADD_BOOM } from "./loginTypes";
+import { ADD_LIKE } from "./loginTypes";
+import { REMOVE_LIKE } from "./loginTypes";
 import Cookies from 'js-cookie';
 
 const token = Cookies.get('token');
 const userId = Cookies.get('id');
 const boomNb = Cookies.get('boomNb');
-
+const likedBooms = Cookies.get('likedBooms');
 const initialState = {
   is_connected: token ? true : false,
   token: token ? token : "",
   id: userId ? userId : "",
-  boomCount: boomNb
+  boomCount: boomNb,
+  likedBooms: likedBooms.split(',').map(b => parseInt(b,10)) || []
 }
 
 const loginReducer = (state = initialState, action) => {
@@ -30,11 +32,6 @@ const loginReducer = (state = initialState, action) => {
         token: '',
         id: ''
       }
-    case ADD_BOOM:
-      return {
-        ...state,
-        boomCount: state.boomCount + 1
-      }
     case SET_BOOM_NUMBER_REQUEST:
       return {
         ...state,
@@ -45,6 +42,16 @@ const loginReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         boomCount: action.nb
+      }
+    case ADD_LIKE:
+      return {
+        ...state,
+        likedBooms: [...state.likedBooms, action.boomId]
+      }
+    case REMOVE_LIKE:
+      return {
+        ...state,
+        likedBooms: [...state.likedBooms].filter((likedBoom) => likedBoom != action.boomId)
       }
     default:
       return state;
