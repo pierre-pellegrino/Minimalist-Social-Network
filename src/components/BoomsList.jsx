@@ -8,11 +8,15 @@ const BoomsList = ({user}) => {
   const [fetchedBooms, setFetchedBooms] = useState([]);
   const loginInfos = useSelector(state => state);
 
+  const handleRefreshLike = () => {
+    setFetchedBooms([]);
+  }
+
   if (fetchedBooms.length === 0 || fetchedBooms.length !== parseInt(loginInfos.boomCount,10)) {
     fetch('http://localhost:1337/posts?_sort=created_at:desc', {
       method: 'get',
       headers: {
-        'Authorization': `Bearer ${loginInfos.token}`,
+        // 'Authorization': `Bearer ${loginInfos.token}`,
         'Content-Type': 'application/json'
       }
     })
@@ -35,7 +39,7 @@ const BoomsList = ({user}) => {
         {fetchedBooms.map((boom, i) => {
           return (
             // If an user is passed as a parameter, only displays his booms. Otherwise displays them all.
-           !user ? <BoomCard key={i} boom={boom} /> : boom.user.id === user.id && <BoomCard key={i} boom={boom} />
+           !user ? <BoomCard key={i} boom={boom} onRefresh={handleRefreshLike} /> : boom.user.id === user.id && <BoomCard key={i} boom={boom} onRefresh={handleRefreshLike} />
           )
         })}
       </div>

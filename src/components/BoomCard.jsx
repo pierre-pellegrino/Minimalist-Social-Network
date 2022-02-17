@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchBoomNumber } from '../redux/login/loginActions';
 import LikeBtn from './LikeBtn';
 
-const BoomCard = ({boom}) => {
+const BoomCard = ({boom, onRefresh}) => {
   const loginInfos = useSelector(state => state);
   const date = new Date(boom.created_at).toLocaleString('en-EN', {hour12: false, month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric' });
   const dispatch = useDispatch();
@@ -26,9 +26,9 @@ const BoomCard = ({boom}) => {
   return (
     <div className="boom-wrapper">
       <div className="boom-top">
-        {parseInt(loginInfos.id,10) === boom.user.id && <p onClick={() => deleteBoom(boom.id)} className="boom-delete">Delete this boom</p>}
-        <p className="tag">Boomed by : <Link className="boom-user" to={`/user/${boom.user.id}`}>{boom.user.username}</Link></p>
-        <LikeBtn likeNb={boom.like} boomId={boom.id} />
+        {loginInfos.is_connected && parseInt(loginInfos.id,10) === boom.user.id && <p onClick={() => deleteBoom(boom.id)} className="boom-delete">Delete this boom</p>}
+        {loginInfos.is_connected && <p className="tag">Boomed by : <Link className="boom-user" to={`/user/${boom.user.id}`}>{boom.user.username}</Link></p>}
+        {loginInfos.is_connected && <LikeBtn likeNb={boom.like} boomId={boom.id} onRefresh={onRefresh}/>}
         <p>{date}</p>
       </div>
       <p className="boom-content">{boom.text}</p>

@@ -4,8 +4,7 @@ import RegisterForm from "./components/RegisterForm";
 import {
   BrowserRouter as Router,
   Routes,
-  Route,
-  Navigate
+  Route
 } from "react-router-dom";
 import Profile from "./pages/Profile";
 import Cookies from 'js-cookie';
@@ -30,12 +29,11 @@ const App = () => {
         <Router>
           <Navbar />
           <Routes>
-
-          <Route path="/" element={<Home />} />
-          <Route path="/register" element={<RegisterForm />} />
-          <Route path="/login" element={<LoginForm />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/user/:username" element={<User />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/register" element={<RegisterForm />} />
+            <Route path="/login" element={<LoginForm />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/user/:username" element={<User />} />
           </Routes>
 
         </Router>
@@ -45,16 +43,3 @@ const App = () => {
 };
 
 render(<App />, document.getElementById('root'));
-
-// ça a pas l'air ouf avec react router v6 alors je pose ça là
-// const PrivateRoute = ({component: Component, ...rest}) => {
-//   return (
-//    <Route {...rest} render={props => (
-//       checkAuth() ? (
-//         <Component {...props} />
-//       ) : (
-//         <Navigate to={{ pathname: '/'}} />
-//       )
-//    )} />
-//   );
-// };

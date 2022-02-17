@@ -13,7 +13,7 @@ const initialState = {
   token: token ? token : "",
   id: userId ? userId : "",
   boomCount: boomNb,
-  likedBooms: likedBooms.split(',').map(b => parseInt(b,10)) || []
+  likedBooms: likedBooms ? likedBooms.split(',').map(b => parseInt(b,10)) : []
 }
 
 const loginReducer = (state = initialState, action) => {

@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 const Home = () => {
   const loginInfos = useSelector(state => state);
-  
+
   if (loginInfos.is_connected) {
     return (
       <>
@@ -23,6 +23,8 @@ const Home = () => {
         <p className="align-center">
           Don't forget to sign up and post your first <span className="bold">boom</span>, gramps.
         </p>
+
+        <BoomsList />
       </div>
     );
   }
